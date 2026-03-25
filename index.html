@@ -16,18 +16,18 @@
     </ul>
 </nav>
 
-    <header>
-        <h1>Rahul Nayak</h1>
-        <p>Java Backend Developer</p>
-    </header>
+<header>
+    <h1>Rahul Nayak</h1>
+    <p>Java Backend Developer</p>
+</header>
 
-    <section id="about">
-<h2>About Me</h2>
-        <p>I am a B.Tech CSE student passionate about backend development.</p>
-    </section>
+<section id="about">
+    <h2>About Me</h2>
+    <p>I am a B.Tech CSE student passionate about backend development.</p>
+</section>
 
-    <section id = "projects">
-        <div class="project-card">
+<section id="projects">
+    <div class="project-card">
         <h3>Student Management System</h3>
         <p>Built using Java & Spring Boot</p>
     </div>
@@ -36,17 +36,17 @@
         <h3>AI Chatbot</h3>
         <p>Basic chatbot using AI concepts</p>
     </div>
-    </section>
+</section>
 
-    <section id = "contact">
-        <h2>Contact</h2>
-        <form onsubmit="sendData(event)">
+<section id="contact">
+    <h2>Contact</h2>
+    <form onsubmit="sendData(event)">
         <input type="text" placeholder="Your Name" name="name" required><br><br>
-        <input type="email" placeholder="Your Email" name = "email" required><br><br>
-        <textarea placeholder="Your Message" required></textarea><br><br>
+        <input type="email" placeholder="Your Email" name="email" required><br><br>
+        <textarea name="message" placeholder="Your Message" required></textarea><br><br>
         <button type="submit">Send</button>
     </form>
-    </section>
+</section>
 
 <button onclick="showMessage()">Say Hello</button>
 
@@ -55,15 +55,16 @@ function showMessage() {
     alert("Thanks for visiting my website!");
 }
 
-
 function sendData(event) {
     event.preventDefault();
 
     const data = {
-        name: document.querySelector("input[name='name']").value,
-        email: document.querySelector("input[name='email']").value,
-        message: document.querySelector("textarea").value
+        name: document.querySelector("[name='name']").value,
+        email: document.querySelector("[name='email']").value,
+        message: document.querySelector("[name='message']").value
     };
+
+    console.log("Sending data:", data);
 
     fetch("https://portfolio-backend-3-tv0g.onrender.com/contact", {
         method: "POST",
@@ -73,6 +74,8 @@ function sendData(event) {
         body: JSON.stringify(data)
     })
     .then(res => {
+        console.log("Response status:", res.status);
+
         if (res.ok) {
             alert("Message saved to MySQL successfully!");
             event.target.reset();
@@ -85,7 +88,6 @@ function sendData(event) {
         alert("Connection failed.");
     });
 }
-
 </script>
 
 </body>
