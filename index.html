@@ -17,7 +17,6 @@
 </nav>
 
     <header>
-<img src="C:\Users\eslavath rahul nayak\OneDrive\Desktop\mypic.jpeg" alt="Profile Photo">
         <h1>Rahul Nayak</h1>
         <p>Java Backend Developer</p>
     </header>
@@ -57,26 +56,36 @@ function showMessage() {
 }
 
 
-
 function sendData(event) {
     event.preventDefault();
 
     const data = {
-        name: document.querySelector("input[type=text]").value,
-        email: document.querySelector("input[type=email]").value,
+        name: document.querySelector("input[name='name']").value,
+        email: document.querySelector("input[name='email']").value,
         message: document.querySelector("textarea").value
     };
 
-    fetch("http://localhost:8080/contact", {
+    fetch("https://portfolio-backend-3-tv0g.onrender.com/contact", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
     })
-    .then(res => res.json())
-    .then(() => alert("Message sent successfully!"));
+    .then(res => {
+        if (res.ok) {
+            alert("Message saved to MySQL successfully!");
+            event.target.reset();
+        } else {
+            alert("Error: Could not save message.");
+        }
+    })
+    .catch(err => {
+        console.error("Error:", err);
+        alert("Connection failed.");
+    });
 }
+
 </script>
 
 </body>
