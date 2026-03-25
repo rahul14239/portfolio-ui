@@ -1,0 +1,102 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+section {
+    padding: 20px;
+    margin: 10px;
+    background: white;
+    border-radius: 10px;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+img {
+    width: 120px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+section:hover {
+    transform: scale(1.02);
+    transition: 0.3s;
+}
+
+body {
+    text-align: center;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    color: white;
+    padding: 10px 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #00adb5;
+}
+
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    section {
+        margin: 5px;
+    }
+}
+html {
+    scroll-behavior: smooth;
+}
+.project-card {
+    background: #fafafa;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+input, textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}

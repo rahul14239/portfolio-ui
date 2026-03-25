@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rahul Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <h2>Rahul Nayak</h2>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+    <header>
+<img src="C:\Users\eslavath rahul nayak\OneDrive\Desktop\mypic.jpeg" alt="Profile Photo">
+        <h1>Rahul Nayak</h1>
+        <p>Java Backend Developer</p>
+    </header>
+
+    <section id="about">
+<h2>About Me</h2>
+        <p>I am a B.Tech CSE student passionate about backend development.</p>
+    </section>
+
+    <section id = "projects">
+        <div class="project-card">
+        <h3>Student Management System</h3>
+        <p>Built using Java & Spring Boot</p>
+    </div>
+
+    <div class="project-card">
+        <h3>AI Chatbot</h3>
+        <p>Basic chatbot using AI concepts</p>
+    </div>
+    </section>
+
+    <section id = "contact">
+        <h2>Contact</h2>
+        <form onsubmit="sendData(event)">
+        <input type="text" placeholder="Your Name" name="name" required><br><br>
+        <input type="email" placeholder="Your Email" name = "email" required><br><br>
+        <textarea placeholder="Your Message" required></textarea><br><br>
+        <button type="submit">Send</button>
+    </form>
+    </section>
+
+<button onclick="showMessage()">Say Hello</button>
+
+<script>
+function showMessage() {
+    alert("Thanks for visiting my website!");
+}
+
+
+
+function sendData(event) {
+    event.preventDefault();
+
+    const data = {
+        name: document.querySelector("input[type=text]").value,
+        email: document.querySelector("input[type=email]").value,
+        message: document.querySelector("textarea").value
+    };
+
+    fetch("http://localhost:8080/contact", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(() => alert("Message sent successfully!"));
+}
+</script>
+
+</body>
+</html>
